@@ -17,4 +17,4 @@ The Recipe Project is a simple web application that allows users to browse throu
 - **Search For Recipe**
 - **Sort All Recipe**
 - **Filter Based On Recipe Type**
-- **Choose The Number Of Recipe Per Page** 
+- **Choose The Number Of Recipes Per Page** 
