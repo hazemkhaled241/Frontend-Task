@@ -98,7 +98,7 @@
                     <textarea id="recipeIngredients" placeholder="Ingredients (comma separated)"></textarea>
                     <input id="select-image" type="file" name="image" accept="image/png, image/jpeg" />
                     <button onclick="addRecipe()">Add Recipe</button><br />
-                    <text class="error-message">You have to enter all values</text>
+                    <text class="error-message"></text>
 
                 </div>
 
@@ -109,7 +109,7 @@
             <div id="detailsPopup" class="details-popup">
                 <div class="details-popup-content">
                     <span class="close-popup" onclick="closeDetailsPopup()">&times;</span>
-                    <h2 id="popupRecipeName"></h2>
+                    <h2 >Recipe Details</h2>
                     <img id="popupRecipeImage" src="" alt="Recipe Image">
                     <div class="midle-info">
                         <p><strong>Ingredients:</strong></p>
@@ -140,7 +140,7 @@
                     <input type="text" id="editRecipeTitle" placeholder="Recipe Title">
                     <input type="text" id="editRecipeType" placeholder="Recipe Type (e.g., Breakfast, Lunch)">
                     <textarea id="editRecipeIngredients" placeholder="Ingredients (comma separated)"></textarea>
-                    <h2 id="editErrorMessage">All fields should be filled</h2>
+                    <h2 id="editErrorMessage"></h2>
                     <input id="edit-select-image" type="file" name="image" accept="image/png, image/jpeg" />
                     <img id="editRecipePreview" src="" alt="Recipe Image" class="preview-image">
                 </div>

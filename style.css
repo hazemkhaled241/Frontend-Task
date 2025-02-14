@@ -112,17 +112,20 @@ html {
     margin-top: 40px;
     padding: 0 100px;
 }
-.apply-clear-filter{
+
+.apply-clear-filter {
     display: flex;
     flex-direction: column;
 }
-.buttons{
+
+.buttons {
     display: flex;
     justify-content: center;
     gap: 10px;
     margin-top: 10px;
 }
-.buttons button{
+
+.buttons button {
     background: #7a963e;
     color: white;
     padding: 10px 15px;
@@ -130,12 +133,12 @@ html {
     cursor: pointer;
     font-size: 16px;
     border-radius: 15px;
-    transition: #7a963e 0.3s ease-in-out;   
+    transition: #7a963e 0.3s ease-in-out;
 }
 
-.buttons button:hover{
+.buttons button:hover {
 
-background-color: #667d32;
+    background-color: #667d32;
 }
 
 .filter {
@@ -144,9 +147,9 @@ background-color: #667d32;
     align-items: center;
 }
 
-.filter select,.filter input
- {
-    padding:5px 10px;
+.filter select,
+.filter input {
+    padding: 5px 10px;
     font-size: 18px;
     width: 70%;
     border: 1px solid #7a963e;
@@ -154,14 +157,13 @@ background-color: #667d32;
     font-family: 'Edu TAS Beginner', cursive;
 
 }
-.filter input:focus
- {
+
+.filter input:focus {
     outline: none !important;
     border: 2px solid #667d32;
 }
 
-.filter select:focus
- {
+.filter select:focus {
     outline: none !important;
     border: 2px solid #667d32;
 }
@@ -204,11 +206,12 @@ background-color: #667d32;
 
 /*search part*/
 
-.search{
+.search {
     display: flex;
-    flex-direction: column ;
+    flex-direction: column;
     align-items: center;
 }
+
 .search input {
     width: 100%;
     padding: 5px;
@@ -222,14 +225,15 @@ background-color: #667d32;
 
 }
 
-.search h2{
+.search h2 {
     color: brown;
     padding: 5px 0;
     font-size: 15px;
     font-family: 'Edu TAS Beginner', cursive;
     display: none;
 }
-.search button{
+
+.search button {
     background: #7a963e;
     color: white;
     padding: 10px 15px;
@@ -237,19 +241,20 @@ background-color: #667d32;
     cursor: pointer;
     font-size: 16px;
     border-radius: 15px;
-    transition: #7a963e 0.3s ease-in-out; 
+    transition: #7a963e 0.3s ease-in-out;
     margin-top: 10px;
     width: fit-content;
-    
+
 }
 
-.search button:hover{
+.search button:hover {
     background-color: #667d32;
 }
-.search input:focus{
+
+.search input:focus {
     outline: none !important;
     border: 2px solid #667d32;
- 
+
 }
 
 
@@ -258,7 +263,6 @@ background-color: #667d32;
 /* no recipes text*/
 .no-recipes {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     font-size: 30px;
@@ -383,9 +387,11 @@ input::file-selector-button {
     cursor: pointer;
 }
 
-.error-message{
+.error-message {
     visibility: hidden;
     color: brown;
+    display: flex;
+    justify-content: center;
 }
 
 
@@ -416,26 +422,27 @@ input::file-selector-button {
     text-align: center;
 }
 
-.edit-popup-content h2{
-   color: #7a963e;
+.edit-popup-content h2 {
+    color: #7a963e;
     text-align: center;
     font-size: 25px;
 }
 
-.edit-popup-content h2{
+.edit-popup-content h2 {
     color: brown;
     padding: 5px 0;
     font-size: 15px;
     font-family: 'Edu TAS Beginner', cursive;
     display: none;
 }
+
 .preview-image {
     width: 100px;
     height: 100px;
     margin-top: 10px;
 }
 
-.action-buttons{
+.action-buttons {
     display: flex;
     justify-content: center;
     gap: 10px;
@@ -452,10 +459,10 @@ input::file-selector-button {
     border-radius: 15px;
     transition: #7a963e 0.3s ease-in-out;
     cursor: pointer;
-    
+
 }
 
-.edit-popup button:hover{
+.edit-popup button:hover {
     background: #667d32;
 }
 
@@ -533,6 +540,7 @@ input::file-selector-button {
     transition: transform 0.3s ease-in-out;
 }
 
+
 .details-popup.show .details-popup-content {
     transform: translateY(0);
 }
@@ -545,7 +553,7 @@ input::file-selector-button {
     margin-bottom: 10px;
 }
 
-.midle-info{
+.midle-info {
     display: flex;
     justify-content: space-between;
     padding: 10px 0;
@@ -559,6 +567,8 @@ input::file-selector-button {
     list-style: none;
     text-align: center;
     margin-top: 10px;
+    overflow-y: auto;
+    height: 150px;
 }
 
 .details-popup-content ul li {
@@ -567,6 +577,8 @@ input::file-selector-button {
     border-radius: 20px;
     font-size: 14px;
     cursor: pointer;
+    height: fit-content;
+    align-content: center;
 }
 
 
@@ -586,7 +598,7 @@ input::file-selector-button {
 }
 
 
-.image-add{
+.image-add {
     position: absolute;
     right: 0;
     visibility: hidden;
@@ -601,9 +613,9 @@ input::file-selector-button {
 /* Grid Layout */
 .recipe-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-  
+
     cursor: pointer;
     width: 100%;
     max-width: 1200px;
@@ -664,37 +676,38 @@ input::file-selector-button {
     text-decoration: none;
 }
 
-.my-recipe-options{
+.my-recipe-options {
     display: flex;
     gap: 50px;
 }
 
-.edit{
+.edit {
     color: #7a963e;
     font-size: 14px;
     font-weight: bold;
     margin-top: 15px;
     display: inline-block;
-    text-decoration: none;   
+    text-decoration: none;
 }
 
-.delete{
+.delete {
     color: #7a963e;
     font-size: 14px;
     font-weight: bold;
     margin-top: 15px;
     display: inline-block;
-    text-decoration: none;   
+    text-decoration: none;
 }
 
-.edit:hover{
+.edit:hover {
     font-size: 16px;
 
-} 
-.delete:hover{
+}
+
+.delete:hover {
     font-size: 16px;
 
-} 
+}
 
 .read-more:hover {
     font-size: 16px;
@@ -806,17 +819,17 @@ input::file-selector-button {
     position: relative;
     font-family: 'Edu TAS Beginner', cursive;
 
-  }
-  
-  .footer a {
+}
+
+.footer a {
     color: wheat;
     text-decoration: none;
     margin: 0 10px;
-  }
-  
-  .footer a:hover {
+}
+
+.footer a:hover {
     text-decoration: underline;
-  }
+}
 
 
 
@@ -827,12 +840,12 @@ input::file-selector-button {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
 
-    .filters{
-      padding-left:10px ;
-      padding-right:10px ;
+    .filters {
+        padding-left: 10px;
+        padding-right: 10px;
     }
 
-    .image-add{
+    .image-add {
         position: fixed;
         display: flex;
         z-index: 1000;
@@ -851,13 +864,13 @@ input::file-selector-button {
         grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     }
 
-    .filters{
+    .filters {
         display: flex;
         flex-direction: column;
         gap: 10px;
     }
 
-    .image-add{
+    .image-add {
         position: fixed;
         display: flex;
         z-index: 1000;
@@ -878,7 +891,7 @@ input::file-selector-button {
         /* Slightly smaller font */
         padding: 5px 10px;
     }
-   
+
 }
 
 @media (max-width: 480px) {
@@ -889,18 +902,20 @@ input::file-selector-button {
     .recipe-content h3 {
         font-size: 18px;
     }
-    .filters{
+
+    .filters {
         display: flex;
         flex-direction: column;
         gap: 10px;
     }
-    .filter{
+
+    .filter {
         display: flex;
         flex-direction: column;
         width: fit-content;
     }
 
-    .image-add{
+    .image-add {
         position: fixed;
         display: flex;
         z-index: 1000;
@@ -925,7 +940,3 @@ input::file-selector-button {
         text-align: center;
     }
 }
-
-
-
-

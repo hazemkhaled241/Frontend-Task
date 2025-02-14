@@ -181,15 +181,11 @@ async function handleSearch() {
         /* if the current tab is Public Recipes */
         if (selectedTab === 0) {
             // Public Recipes - Fetch from API
-            try {
-                const response = await fetch(`https://dummyjson.com/recipes/search?q=${query}`);
-                const data = await response.json();
-                publicSearch = data.recipes;
-                publicSearch = data.recipes;
-                renderRecipes(data.recipes);
-            } catch (error) {
-                console.error("Error fetching search results:", error);
-            }
+            let result = recipes.filter(recipe =>
+                recipe.name.toLowerCase().includes(query.toLowerCase())
+            );
+            renderRecipes(result);
+
         }
         /*if the current tab is my recipes search in myRecipes list */
         else {
@@ -381,6 +377,10 @@ function changePage(page, recipeList) {
 }
 /*this function executed when add button clicked */
 function openPopup() {
+    /*make sure that no prev error*/
+    const errorMessage = document.querySelector(".error-message");
+    errorMessage.style.visibility = "hidden";
+
     const popup = document.getElementById("recipePopup");
     popup.style.display = "flex";
     setTimeout(() => {
@@ -411,8 +411,19 @@ function addRecipe() {
     const imageInput = document.getElementById("select-image");
     const errorMessage = document.querySelector(".error-message");
 
+    /*make sure no prev error message */
+    errorMessage.style.visibility = "hidden";
+
+    console.log(type);
     // Show error message if any field is empty
     if (!title || !type || !ingredients || imageInput.files.length === 0) {
+        errorMessage.innerHTML = "You have to enter all values !"
+        errorMessage.style.visibility = "visible";
+        return;
+    }
+    lowerCaseType = type.toLowerCase();
+    if (lowerCaseType != 'dinner' && lowerCaseType != 'breakefast' && lowerCaseType != 'lunch') {
+        errorMessage.innerHTML = "Tybe should be lunch,breakfast or dinner !"
         errorMessage.style.visibility = "visible";
         return;
     }
@@ -457,7 +468,6 @@ function openDetailsPopup(recipeId) {
     if (!recipe) return;
 
     /*set details of this recipe in the popup component*/
-    document.getElementById("popupRecipeName").textContent = recipe.name;
     document.getElementById("popupRecipeImage").src = recipe.image;
     document.getElementById("popupRecipeType").textContent = recipe.mealType[0];
 
@@ -514,6 +524,10 @@ function closeDeletePopup() {
 
 /*this function excuted when the edit button on the item clicked */
 function openEditPopup(recipeId) {
+    /*make sure that no prev errors */
+    const errorMessage = document.getElementById("editErrorMessage")
+    errorMessage.style.display = "none";
+
     //get this item
     let recipe = myRecipes.find(r => r.id === recipeId);
     if (!recipe) return;
@@ -558,13 +572,23 @@ function updateRecipe() {
     const updatedType = document.getElementById("editRecipeType").value.trim();
     const updatedIngredients = document.getElementById("editRecipeIngredients").value.trim();
     const imageInput = document.getElementById("edit-select-image");
+    const errorMessage = document.getElementById("editErrorMessage")
 
+    errorMessage.style.display = "none";
     if (!updatedTitle || !updatedType || !updatedIngredients) {
-        document.getElementById("editErrorMessage").style.display="block";
+        errorMessage.innerHTML = "You have to enter all values !";
+        errorMessage.style.display = "block";
         return;
     }
 
-    document.getElementById("editErrorMessage").style.display="none";
+    lowerCaseType = updatedType.toLowerCase();
+    if (lowerCaseType != 'dinner' && lowerCaseType != 'breakefast' && lowerCaseType != 'lunch') {
+        errorMessage.innerHTML = "Tybe should be lunch,breakfast or dinner !"
+        errorMessage.style.display = "block";
+        return;
+    }
+
+    errorMessage.style.display = "none";
 
     //check if the recipe exist or deleted
     let recipeIndex = myRecipes.findIndex(r => r.id === recipeId);
@@ -584,7 +608,7 @@ function updateRecipe() {
             finalizeUpdate(recipeIndex, updatedTitle, updatedType, updatedIngredients);
         };
         reader.readAsDataURL(imageInput.files[0]);
-    } 
+    }
     //in case the update not contains the image
     else {
         finalizeUpdate(recipeIndex, updatedTitle, updatedType, updatedIngredients);
