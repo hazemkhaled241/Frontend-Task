@@ -93,6 +93,7 @@ function sortRecipes() {
             }
             /*if there was a search result before sort this result search*/
             else {
+
                 return publicSearch.sort((a, b) => sortOrder === "asc" ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name));
 
             }
@@ -154,6 +155,7 @@ function clearFilter() {
     document.getElementById("sortDropdown").value = "none";
     document.getElementById("recipeTypeDropdown").value = "all"
     document.getElementById("recipesPerPageInput").value = 5;
+    itemsPerPage=5;
     myFilterRecipes = [];
     /*finally check on the selected tab to decide which recipes draw local or global */
     if (selectedTab === 0)
@@ -166,7 +168,7 @@ function clearFilter() {
 }
 
 /*this function called when the search button clicked*/
-async function handleSearch() {
+ function handleSearch() {
     const query = document.getElementById("searchInput").value.trim();
     /*check if a valid query or not */
     if (!query) {
@@ -184,6 +186,7 @@ async function handleSearch() {
             let result = recipes.filter(recipe =>
                 recipe.name.toLowerCase().includes(query.toLowerCase())
             );
+            publicSearch=result;
             renderRecipes(result);
 
         }
@@ -247,6 +250,7 @@ function renderTabs() {
             clearFilter();
             /*check to decide which recipes will appears */
             if (selectedTab === 0) {
+                addImage.style.visibility = "hidden";
                 fetchPublicRecipes();
 
             } else {
@@ -414,7 +418,6 @@ function addRecipe() {
     /*make sure no prev error message */
     errorMessage.style.visibility = "hidden";
 
-    console.log(type);
     // Show error message if any field is empty
     if (!title || !type || !ingredients || imageInput.files.length === 0) {
         errorMessage.innerHTML = "You have to enter all values !"

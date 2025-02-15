@@ -939,4 +939,9 @@ input::file-selector-button {
         padding: 10px;
         text-align: center;
     }
+
+    #pagination{
+
+        gap: 2px;
+    }
 }
